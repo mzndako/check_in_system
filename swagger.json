@@ -1,0 +1,5491 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Zeedas Hire",
+    "description": "TODO: Add Description"
+  },
+  "host": "api.natterbase.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/invite/": {
+      "get": {
+        "description": "Get all the pending invites sent by the clietn",
+        "summary": "Get All Pending Invites",
+        "tags": [
+          "Invites"
+        ],
+        "operationId": "InviteGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetAllPendingInvitesresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": [
+                  {
+                    "_id": "5ba123319606363fda586831",
+                    "team_Id": "000028",
+                    "invited_user_Id": "000031",
+                    "__v": 0,
+                    "date": "2018-09-18T16:09:21.814Z",
+                    "name": "Muhammad Ndako"
+                  },
+                  {
+                    "_id": "5ba1262aa1dbc145c5c2c4ff",
+                    "team_Id": "000028",
+                    "invited_user_Id": "000031",
+                    "__v": 0,
+                    "date": "2018-09-18T16:22:02.598Z",
+                    "name": "Muhammad Ndako"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Send Invite Mail to Developer",
+        "summary": "Hire Developer",
+        "tags": [
+          "Invites"
+        ],
+        "operationId": "InvitePost2",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "user_Id",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/HireDeveloperresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Invite sent to the developer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set_password": {
+      "post": {
+        "description": "Use the reset token to set a new password",
+        "summary": "Set New Password",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "SetPasswordPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Token",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SetNewPasswordresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Password Reset Successfull"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project/": {
+      "post": {
+        "description": "Backend Api for Zeedas API",
+        "summary": "Create Project",
+        "tags": [
+          "Projects"
+        ],
+        "operationId": "ProjectPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateProjectresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Successfully Created"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invite/{invite_Id}": {
+      "get": {
+        "description": "Get the developer pending invite details",
+        "summary": "Get Invite Detail",
+        "tags": [
+          "Invites"
+        ],
+        "operationId": "InviteByInviteIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "invite_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetInviteDetailresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": {
+                  "about": "This is about me and you",
+                  "website": "www.quicksms1.com",
+                  "company_type": "Technology",
+                  "company_name": "Quicktel Solution",
+                  "industry": "Technology",
+                  "year": "2017",
+                  "state": "Niger",
+                  "country": "Nigeria",
+                  "client_name": "Prince Isaac"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete an Invite (Client Only)",
+        "summary": "Delete an Invite",
+        "tags": [
+          "Invites"
+        ],
+        "operationId": "InviteByInviteIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "invite_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnInviteresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Invite Deleted Successfully"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/module/{project_Id}": {
+      "get": {
+        "summary": "Retrieve Project Modules",
+        "tags": [
+          "Module"
+        ],
+        "operationId": "ModuleByProjectIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RetrieveProjectModulesresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": [
+                  {
+                    "_id": "5b2cbe11fa399146a91e619b",
+                    "module_name": "fix pm missing on chat",
+                    "module_description": "Fix pm not showing on chat",
+                    "end_date": 1529708400000,
+                    "developer_Id": "000036",
+                    "created_time": 1529658897834,
+                    "date_completed": 1529667860350,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2ce294c91cb477300fbe72",
+                    "module_name": "fix switch branch",
+                    "module_description": "fix switch branch",
+                    "developer_Id": "000036",
+                    "end_date": 1529708400000,
+                    "created_time": 1529668244341,
+                    "date_completed": 1530272472830,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2ce294c91cb477300fbe73",
+                    "module_name": "fix switch branch",
+                    "module_description": "fix switch branch",
+                    "developer_Id": "000036",
+                    "end_date": 1529708400000,
+                    "created_time": 1529668244497,
+                    "date_completed": 1529676888975,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2ce2a6c91cb477300fbe74",
+                    "module_name": "fix time reset ",
+                    "module_description": "fix it",
+                    "developer_Id": "000036",
+                    "end_date": 1529708400000,
+                    "created_time": 1529668262016,
+                    "date_completed": 1530030684184,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2ce2e6c91cb477300fbe75",
+                    "module_name": "fix recent files path sent to server",
+                    "module_description": "fix the path ",
+                    "developer_Id": "000036",
+                    "end_date": 1529708400000,
+                    "created_time": 1529668326160,
+                    "date_completed": 1530049457162,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2d2cadfb62e35568f22832",
+                    "module_name": "start module without repository",
+                    "module_description": "Ability to start a module that doesnt have a repository",
+                    "developer_Id": "000036",
+                    "end_date": 1529708400000,
+                    "created_time": 1529687213037,
+                    "date_completed": 1530207777654,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2f6256fb62e35568f2284e",
+                    "module_name": "Module Description",
+                    "module_description": "Add module description to module modal",
+                    "developer_Id": "000036",
+                    "end_date": 1529881200000,
+                    "created_time": 1529832022915,
+                    "date_completed": 1530137433205,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b2f6357fb62e35568f22853",
+                    "module_name": "Feature count",
+                    "module_description": "Show count of each feature on the module modal tab. Show the number of test cases on the Test cases tab and others. e.g Test Case (4)",
+                    "developer_Id": "000036",
+                    "end_date": 1529881200000,
+                    "created_time": 1529832279147,
+                    "date_completed": 1530031211922,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b312692bcf7f26e3ed3bad5",
+                    "module_name": "fix rejecting module modal",
+                    "module_description": "Fix the second screen shown when rejecting a module after rejecting a previous one",
+                    "developer_Id": "000036",
+                    "end_date": 1529967600000,
+                    "created_time": 1529947794341,
+                    "date_completed": 1530080660646,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b36047407497d1c18140b4e",
+                    "module_name": "Fix chat system",
+                    "module_description": "fix chat system",
+                    "developer_Id": "000036",
+                    "end_date": 1530313200000,
+                    "created_time": 1530266740299,
+                    "date_completed": 1530395033718,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b36049e07497d1c18140b4f",
+                    "module_name": "issues binding",
+                    "module_description": "issuess binding",
+                    "developer_Id": "000036",
+                    "end_date": 1530313200000,
+                    "created_time": 1530266782660,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b36061f07497d1c18140b55",
+                    "module_name": "New module",
+                    "module_description": "ability to create new module from the desktop application",
+                    "developer_Id": "000036",
+                    "end_date": 1530313200000,
+                    "created_time": 1530267167614,
+                    "date_completed": 1530538876195,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b3de9e38e03ff23bf69b658",
+                    "module_name": "Developer Location",
+                    "module_description": "location",
+                    "developer_Id": "000036",
+                    "created_time": 1530784227465,
+                    "date_completed": 1530824093831,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b486ad3de4dca1d3f882c35",
+                    "module_name": "one time sign in",
+                    "module_description": "allow one signin per system",
+                    "developer_Id": "000036",
+                    "created_time": 1531472595364,
+                    "date_completed": 1531481932083,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  },
+                  {
+                    "_id": "5b4890231a5ea757ba1489ac",
+                    "module_name": "EA and QA login",
+                    "module_description": "allow ea and qa to login to the desktop app",
+                    "developer_Id": "000036",
+                    "created_time": 1531482147272,
+                    "developer_name": "musa ibrahim",
+                    "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "Backend Api for Zeedas API",
+        "summary": "Login",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "LoginPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Login Successful",
+                "type": "5",
+                "user": {
+                  "first_name": "Muhammad",
+                  "last_name": "Ndako",
+                  "Email": "muhammad.ndako@natterbase.com"
+                },
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMDAwMDMxIiwiZGV2aWNlX0lkIjoiIiwiaWF0IjoxNTM2NzQ2ODcwLCJleHAiOjE1NjgxOTY0NzB9.WKJQjt4D_LZ_T_yJMzi2SurlyR478aONjBM3eSN1hLE",
+                "userStatus": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    "/confirmation": {
+      "post": {
+        "description": "Send token to this endpoint to confirm the user account.",
+        "summary": "Confirmation Link",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "ConfirmationPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ConfirmationLinkresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Account Confirmed Successfully"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/teams/{project_Id}": {
+      "get": {
+        "description": "Get all the team members in a project",
+        "summary": "Get Teams By Project",
+        "tags": [
+          "Teams"
+        ],
+        "operationId": "TeamsByProjectIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetTeamsByProjectresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": [
+                  {
+                    "_id": "5b1ff170cf03925687e62ded",
+                    "first_name": "Muhammad",
+                    "last_name": "Ndako",
+                    "Email": "muhammad.ndako@natterbase.com",
+                    "Id": "000031",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b2a8d52d2f23d10c817898d",
+                    "first_name": "Dev Muhd",
+                    "last_name": "Ndako",
+                    "Email": "mzndako@gmail.com",
+                    "Id": "000041",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b680d6a15c80b382a26a3cb",
+                    "first_name": "Faith",
+                    "last_name": "Dike",
+                    "Email": "faith.dike@natterbase.com",
+                    "Id": "000074",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b805399498a734c2d63d9a3",
+                    "first_name": "Hassan",
+                    "last_name": "Oyeyemi",
+                    "Email": "oyeyemihassan@gmail.com",
+                    "Id": "000088",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b9685ccbb40456c2a8af83d",
+                    "first_name": "Awulonu",
+                    "last_name": "Obinna",
+                    "Email": "awulonuobinna@gmail.com",
+                    "Id": "000093",
+                    "status": 2
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/info": {
+      "get": {
+        "description": "The the company biodata",
+        "summary": "Get Client BioData",
+        "tags": [
+          "Client"
+        ],
+        "operationId": "ClientInfoGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetClientBiodataresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": {
+                  "about": "This is about me and you",
+                  "website": "www.quicksms1.com",
+                  "company_type": "Technology",
+                  "company_name": "Quicktel Solution",
+                  "industry": "Technology",
+                  "year": "2017",
+                  "state": "Niger",
+                  "country": "Nigeria"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update client info",
+        "summary": "Update client info1",
+        "tags": [
+          "Client"
+        ],
+        "operationId": "ClientInfoPut2",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "about",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "website",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "company_type",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "company_name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "industry",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "year",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "country",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateClientInforesponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": null,
+                "message": "Successfully Updated"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/teams": {
+      "get": {
+        "description": "Get all the team members for the client",
+        "summary": "Get All Team Members",
+        "tags": [
+          "Teams"
+        ],
+        "operationId": "TeamsGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetAllTeamMembersresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": [
+                  {
+                    "_id": "5b1ff170cf03925687e62ded",
+                    "first_name": "Muhammad",
+                    "last_name": "Ndako",
+                    "Email": "muhammad.ndako@natterbase.com",
+                    "Id": "000031",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b2a8d52d2f23d10c817898d",
+                    "first_name": "Dev Muhd",
+                    "last_name": "Ndako",
+                    "Email": "mzndako@gmail.com",
+                    "Id": "000041",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b680d6a15c80b382a26a3cb",
+                    "first_name": "Faith",
+                    "last_name": "Dike",
+                    "Email": "faith.dike@natterbase.com",
+                    "Id": "000074",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b805399498a734c2d63d9a3",
+                    "first_name": "Hassan",
+                    "last_name": "Oyeyemi",
+                    "Email": "oyeyemihassan@gmail.com",
+                    "Id": "000088",
+                    "status": 2
+                  },
+                  {
+                    "_id": "5b9685ccbb40456c2a8af83d",
+                    "first_name": "Awulonu",
+                    "last_name": "Obinna",
+                    "Email": "awulonuobinna@gmail.com",
+                    "Id": "000093",
+                    "status": 2
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet/add_card": {
+      "post": {
+        "summary": "add card",
+        "tags": [
+          "wallet"
+        ],
+        "operationId": "WalletAddCardPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddCardrequest"
+            }
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddCardresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": false,
+                "message": "Invalid card Number!"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/password_reset": {
+      "post": {
+        "description": "Send password reset token to the user",
+        "summary": "Password Reset",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "PasswordResetPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PasswordResetresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Reset Email Sent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resend_confirmation": {
+      "post": {
+        "description": "Send confirmation link to the user email again",
+        "summary": "Resend Confirmation Link",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "ResendConfirmationPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ResendConfirmationLinkresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Confirmation Sent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project/overview/{project_Id}": {
+      "get": {
+        "description": "",
+        "summary": "Get Project Overview",
+        "tags": [
+          "Projects"
+        ],
+        "operationId": "ProjectOverviewByProjectIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetProjectOverviewresponse"
+            }
+          }
+        }
+      }
+    },
+    "/project/{project_Id}": {
+      "delete": {
+        "description": "Delete a project using the project id (_id) received when getting the project",
+        "summary": "Delete Project",
+        "tags": [
+          "Projects"
+        ],
+        "operationId": "ProjectByProjectIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeleteProjectresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Successfully Deleted"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet": {
+      "get": {
+        "summary": "Get wallet",
+        "tags": [
+          "wallet"
+        ],
+        "operationId": "WalletGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/invite/process": {
+      "post": {
+        "description": "Accept or Reject an Invite sent (By Developer)",
+        "summary": "Accept or Reject Invite",
+        "tags": [
+          "Invites"
+        ],
+        "operationId": "InviteProcessPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "invite_Id",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "accept",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AcceptOrRejectInviteresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "message": "Accepted Successfully"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/info/{client_Id}": {
+      "get": {
+        "description": "The the company biodata",
+        "summary": "Get Client BioData",
+        "tags": [
+          "Client"
+        ],
+        "operationId": "ClientInfoByClientIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "client_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetClientBiodataresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": {
+                  "about": "This is about me and you",
+                  "website": "www.quicksms1.com",
+                  "company_type": "Technology",
+                  "company_name": "Quicktel Solution",
+                  "industry": "Technology",
+                  "year": "2017",
+                  "state": "Niger",
+                  "country": "Nigeria"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project": {
+      "get": {
+        "description": "Get all projects for the user",
+        "summary": "Get Project",
+        "tags": [
+          "Projects"
+        ],
+        "operationId": "ProjectGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetProjectresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": [
+                  {
+                    "_id": "5b2781881085621255503075",
+                    "project_name": "Zeedas Backend",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1529315720869",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 2
+                  },
+                  {
+                    "_id": "5b2781b11085621255503076",
+                    "project_name": "Zeedas FrontEnd",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1529315761799",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 2
+                  },
+                  {
+                    "_id": "5b2a88ecbe859b06e7bad1e0",
+                    "project_name": "Cashless (leadspace)",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1529514220466",
+                    "team": [
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5b2b8c1ff21bf311a76e620c",
+                    "project_name": "Zeedas Desktop",
+                    "project_description": "",
+                    "platform_name": "other",
+                    "created_time": "1529580575501",
+                    "team": [
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 2
+                  },
+                  {
+                    "_id": "5b43312950713d50d5ed36fc",
+                    "project_name": "Zeedas Hire",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1531130153864",
+                    "team": [
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5b477d483f428975768e36d3",
+                    "project_name": "Passion Incubation",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1531411784817",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 0
+                  },
+                  {
+                    "_id": "5b68563415c80b382a26a3d3",
+                    "project_name": "SaveAll",
+                    "project_description": "",
+                    "platform_name": "other",
+                    "created_time": "1533564468770",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5b68657115c80b382a26a3e2",
+                    "project_name": "FundAll",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1533568369344",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5b76b8d225de3d4b0ac775df",
+                    "project_name": "FundAll iOS",
+                    "project_description": "",
+                    "platform_name": "mobile",
+                    "created_time": "1534507218633",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5b83c812498a734c2d63da06",
+                    "project_name": "VisionScape",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1535363090600",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5b968ab3bb40456c2a8af865",
+                    "project_name": "TBCA Frontend",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1536592563258",
+                    "team": [
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/1536591790829-000093-100x100.jpg"
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": ""
+                      }
+                    ],
+                    "pm_count": 1
+                  },
+                  {
+                    "_id": "5ba3bce305a9082ff4e71b97",
+                    "project_name": "daranig",
+                    "project_description": "",
+                    "platform_name": "web",
+                    "created_time": "1537457379614",
+                    "team": [
+                      {
+                        "image": ""
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                      },
+                      {
+                        "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                      }
+                    ],
+                    "pm_count": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet/delete_card/312121313323": {
+      "get": {
+        "description": "  ",
+        "summary": "Delete card",
+        "tags": [
+          "wallet"
+        ],
+        "operationId": "WalletDeleteCard312121313323Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeleteCardresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": false,
+                "message": "Card not failed"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet/get_card": {
+      "get": {
+        "summary": "Add card",
+        "tags": [
+          "wallet"
+        ],
+        "operationId": "WalletGetCardGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddCardresponse36"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "/module/details/{modue_Id}": {
+      "get": {
+        "summary": "Retrieve Module Details",
+        "tags": [
+          "Module"
+        ],
+        "operationId": "ModuleDetailsByModueIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "modue_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RetrieveModuleDetailsresponse"
+            },
+            "examples": {
+              "application/json": {
+                "status": true,
+                "data": {
+                  "_id": "5b2cbe11fa399146a91e619b",
+                  "module_name": "fix pm missing on chat",
+                  "module_description": "Fix pm not showing on chat",
+                  "category": "all",
+                  "end_date": 1529708400000,
+                  "dev_time": 3,
+                  "developer_Id": "musa ibrahim",
+                  "project_Id": "SyvmnWF-m",
+                  "updated_time": 1529658898716,
+                  "created_time": 1529658897834,
+                  "Id": "Sk9fR49W7",
+                  "__v": 0,
+                  "rejected_reason": "",
+                  "start_time": 1529663258785,
+                  "date_completed": 1529667860350,
+                  "link": "",
+                  "cast": [],
+                  "acted_on": 0,
+                  "mail_sent_dev_id": "",
+                  "dev_can_start": true,
+                  "sprint": 1,
+                  "location": [],
+                  "created_by_dev": "",
+                  "attention": false,
+                  "status": 3,
+                  "rejected": 0,
+                  "extended_time": 0,
+                  "actual_time": 7922.513553801713,
+                  "access_files": [],
+                  "files": [],
+                  "dependency": [],
+                  "issues": [],
+                  "test": [],
+                  "method": [],
+                  "recent_files": [
+                    {
+                      "time": "1529664987972",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Auth.js",
+                      "_id": "5b2cd5dbc91cb477300fbe41"
+                    },
+                    {
+                      "time": "1529678306550",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\core\\ang.js",
+                      "_id": "5b2cd604c91cb477300fbe44"
+                    },
+                    {
+                      "time": "1529667670517",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\templates\\chat.html",
+                      "_id": "5b2cd87dc91cb477300fbe48"
+                    },
+                    {
+                      "time": "1529665868333",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\app.html",
+                      "_id": "5b2cd94cc91cb477300fbe4e"
+                    },
+                    {
+                      "time": "1529688763335",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Project.js",
+                      "_id": "5b2ce49ac91cb477300fbe77"
+                    },
+                    {
+                      "time": "1529688892695",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\services\\filesystem.js",
+                      "_id": "5b2d05db13a3441d0fc15d58"
+                    },
+                    {
+                      "time": "1529678076857",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\css\\bootstrap\\less\\utilities.less",
+                      "_id": "5b2d08fc13a3441d0fc15d5d"
+                    },
+                    {
+                      "time": "1529678103521",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\alert-circled.png",
+                      "_id": "5b2d091713a3441d0fc15d5e"
+                    },
+                    {
+                      "time": "1529678103641",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\android-mixer.png",
+                      "_id": "5b2d091713a3441d0fc15d5f"
+                    },
+                    {
+                      "time": "1529689042848",
+                      "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\ecosystem.config.js",
+                      "_id": "5b2d0edcff5f9941235d30c7"
+                    }
+                  ],
+                  "on_ea": false,
+                  "ea": false,
+                  "on_qa": false,
+                  "qa": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project/timeline/{project_Id}": {
+      "get": {
+        "description": "Get the timeline for the project",
+        "summary": "Get Project Timeline",
+        "tags": [
+          "Projects"
+        ],
+        "operationId": "ProjectTimelineByProjectIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_Id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GetProjectTimelineresponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetDevelopersresponse": {
+      "title": "Get DevelopersResponse",
+      "example": {
+        "status": true,
+        "message": "Invite sent to the developer"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Invite sent to the developer",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "SetNewPasswordresponse": {
+      "title": "Set New PasswordResponse",
+      "example": {
+        "status": true,
+        "message": "Password Reset Successfull"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Password Reset Successfull",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "CreateProjectresponse": {
+      "title": "Create ProjectResponse",
+      "example": {
+        "status": true,
+        "message": "Successfully Created"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Successfully Created",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "GetInviteDetailresponse": {
+      "title": "Get Invite DetailResponse",
+      "example": {
+        "status": true,
+        "data": {
+          "about": "This is about me and you",
+          "website": "www.quicksms1.com",
+          "company_type": "Technology",
+          "company_name": "Quicktel Solution",
+          "industry": "Technology",
+          "year": "2017",
+          "state": "Niger",
+          "country": "Nigeria",
+          "client_name": "Prince Isaac"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data": {
+      "title": "Data",
+      "example": {
+        "about": "This is about me and you",
+        "website": "www.quicksms1.com",
+        "company_type": "Technology",
+        "company_name": "Quicktel Solution",
+        "industry": "Technology",
+        "year": "2017",
+        "state": "Niger",
+        "country": "Nigeria",
+        "client_name": "Prince Isaac"
+      },
+      "type": "object",
+      "properties": {
+        "about": {
+          "description": "",
+          "example": "This is about me and you",
+          "type": "string"
+        },
+        "website": {
+          "description": "",
+          "example": "www.quicksms1.com",
+          "type": "string"
+        },
+        "company_type": {
+          "description": "",
+          "example": "Technology",
+          "type": "string"
+        },
+        "company_name": {
+          "description": "",
+          "example": "Quicktel Solution",
+          "type": "string"
+        },
+        "industry": {
+          "description": "",
+          "example": "Technology",
+          "type": "string"
+        },
+        "year": {
+          "description": "",
+          "example": "2017",
+          "type": "string"
+        },
+        "state": {
+          "description": "",
+          "example": "Niger",
+          "type": "string"
+        },
+        "country": {
+          "description": "",
+          "example": "Nigeria",
+          "type": "string"
+        },
+        "client_name": {
+          "description": "",
+          "example": "Prince Isaac",
+          "type": "string"
+        }
+      },
+      "required": [
+        "about",
+        "website",
+        "company_type",
+        "company_name",
+        "industry",
+        "year",
+        "state",
+        "country",
+        "client_name"
+      ]
+    },
+    "RetrieveProjectModulesresponse": {
+      "title": "Retrieve Project ModulesResponse",
+      "example": {
+        "status": true,
+        "data": [
+          {
+            "_id": "5b2cbe11fa399146a91e619b",
+            "module_name": "fix pm missing on chat",
+            "module_description": "Fix pm not showing on chat",
+            "end_date": 1529708400000,
+            "developer_Id": "000036",
+            "created_time": 1529658897834,
+            "date_completed": 1529667860350,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2ce294c91cb477300fbe72",
+            "module_name": "fix switch branch",
+            "module_description": "fix switch branch",
+            "developer_Id": "000036",
+            "end_date": 1529708400000,
+            "created_time": 1529668244341,
+            "date_completed": 1530272472830,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2ce294c91cb477300fbe73",
+            "module_name": "fix switch branch",
+            "module_description": "fix switch branch",
+            "developer_Id": "000036",
+            "end_date": 1529708400000,
+            "created_time": 1529668244497,
+            "date_completed": 1529676888975,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2ce2a6c91cb477300fbe74",
+            "module_name": "fix time reset ",
+            "module_description": "fix it",
+            "developer_Id": "000036",
+            "end_date": 1529708400000,
+            "created_time": 1529668262016,
+            "date_completed": 1530030684184,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2ce2e6c91cb477300fbe75",
+            "module_name": "fix recent files path sent to server",
+            "module_description": "fix the path ",
+            "developer_Id": "000036",
+            "end_date": 1529708400000,
+            "created_time": 1529668326160,
+            "date_completed": 1530049457162,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2d2cadfb62e35568f22832",
+            "module_name": "start module without repository",
+            "module_description": "Ability to start a module that doesnt have a repository",
+            "developer_Id": "000036",
+            "end_date": 1529708400000,
+            "created_time": 1529687213037,
+            "date_completed": 1530207777654,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2f6256fb62e35568f2284e",
+            "module_name": "Module Description",
+            "module_description": "Add module description to module modal",
+            "developer_Id": "000036",
+            "end_date": 1529881200000,
+            "created_time": 1529832022915,
+            "date_completed": 1530137433205,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b2f6357fb62e35568f22853",
+            "module_name": "Feature count",
+            "module_description": "Show count of each feature on the module modal tab. Show the number of test cases on the Test cases tab and others. e.g Test Case (4)",
+            "developer_Id": "000036",
+            "end_date": 1529881200000,
+            "created_time": 1529832279147,
+            "date_completed": 1530031211922,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b312692bcf7f26e3ed3bad5",
+            "module_name": "fix rejecting module modal",
+            "module_description": "Fix the second screen shown when rejecting a module after rejecting a previous one",
+            "developer_Id": "000036",
+            "end_date": 1529967600000,
+            "created_time": 1529947794341,
+            "date_completed": 1530080660646,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b36047407497d1c18140b4e",
+            "module_name": "Fix chat system",
+            "module_description": "fix chat system",
+            "developer_Id": "000036",
+            "end_date": 1530313200000,
+            "created_time": 1530266740299,
+            "date_completed": 1530395033718,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b36049e07497d1c18140b4f",
+            "module_name": "issues binding",
+            "module_description": "issuess binding",
+            "developer_Id": "000036",
+            "end_date": 1530313200000,
+            "created_time": 1530266782660,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b36061f07497d1c18140b55",
+            "module_name": "New module",
+            "module_description": "ability to create new module from the desktop application",
+            "developer_Id": "000036",
+            "end_date": 1530313200000,
+            "created_time": 1530267167614,
+            "date_completed": 1530538876195,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b3de9e38e03ff23bf69b658",
+            "module_name": "Developer Location",
+            "module_description": "location",
+            "developer_Id": "000036",
+            "created_time": 1530784227465,
+            "date_completed": 1530824093831,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b486ad3de4dca1d3f882c35",
+            "module_name": "one time sign in",
+            "module_description": "allow one signin per system",
+            "developer_Id": "000036",
+            "created_time": 1531472595364,
+            "date_completed": 1531481932083,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "_id": "5b4890231a5ea757ba1489ac",
+            "module_name": "EA and QA login",
+            "module_description": "allow ea and qa to login to the desktop app",
+            "developer_Id": "000036",
+            "created_time": 1531482147272,
+            "developer_name": "musa ibrahim",
+            "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "example": [
+            {
+              "_id": "5b2cbe11fa399146a91e619b",
+              "module_name": "fix pm missing on chat",
+              "module_description": "Fix pm not showing on chat",
+              "end_date": 1529708400000,
+              "developer_Id": "000036",
+              "created_time": 1529658897834,
+              "date_completed": 1529667860350,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2ce294c91cb477300fbe72",
+              "module_name": "fix switch branch",
+              "module_description": "fix switch branch",
+              "developer_Id": "000036",
+              "end_date": 1529708400000,
+              "created_time": 1529668244341,
+              "date_completed": 1530272472830,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2ce294c91cb477300fbe73",
+              "module_name": "fix switch branch",
+              "module_description": "fix switch branch",
+              "developer_Id": "000036",
+              "end_date": 1529708400000,
+              "created_time": 1529668244497,
+              "date_completed": 1529676888975,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2ce2a6c91cb477300fbe74",
+              "module_name": "fix time reset ",
+              "module_description": "fix it",
+              "developer_Id": "000036",
+              "end_date": 1529708400000,
+              "created_time": 1529668262016,
+              "date_completed": 1530030684184,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2ce2e6c91cb477300fbe75",
+              "module_name": "fix recent files path sent to server",
+              "module_description": "fix the path ",
+              "developer_Id": "000036",
+              "end_date": 1529708400000,
+              "created_time": 1529668326160,
+              "date_completed": 1530049457162,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2d2cadfb62e35568f22832",
+              "module_name": "start module without repository",
+              "module_description": "Ability to start a module that doesnt have a repository",
+              "developer_Id": "000036",
+              "end_date": 1529708400000,
+              "created_time": 1529687213037,
+              "date_completed": 1530207777654,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2f6256fb62e35568f2284e",
+              "module_name": "Module Description",
+              "module_description": "Add module description to module modal",
+              "developer_Id": "000036",
+              "end_date": 1529881200000,
+              "created_time": 1529832022915,
+              "date_completed": 1530137433205,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b2f6357fb62e35568f22853",
+              "module_name": "Feature count",
+              "module_description": "Show count of each feature on the module modal tab. Show the number of test cases on the Test cases tab and others. e.g Test Case (4)",
+              "developer_Id": "000036",
+              "end_date": 1529881200000,
+              "created_time": 1529832279147,
+              "date_completed": 1530031211922,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b312692bcf7f26e3ed3bad5",
+              "module_name": "fix rejecting module modal",
+              "module_description": "Fix the second screen shown when rejecting a module after rejecting a previous one",
+              "developer_Id": "000036",
+              "end_date": 1529967600000,
+              "created_time": 1529947794341,
+              "date_completed": 1530080660646,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b36047407497d1c18140b4e",
+              "module_name": "Fix chat system",
+              "module_description": "fix chat system",
+              "developer_Id": "000036",
+              "end_date": 1530313200000,
+              "created_time": 1530266740299,
+              "date_completed": 1530395033718,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b36049e07497d1c18140b4f",
+              "module_name": "issues binding",
+              "module_description": "issuess binding",
+              "developer_Id": "000036",
+              "end_date": 1530313200000,
+              "created_time": 1530266782660,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b36061f07497d1c18140b55",
+              "module_name": "New module",
+              "module_description": "ability to create new module from the desktop application",
+              "developer_Id": "000036",
+              "end_date": 1530313200000,
+              "created_time": 1530267167614,
+              "date_completed": 1530538876195,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b3de9e38e03ff23bf69b658",
+              "module_name": "Developer Location",
+              "module_description": "location",
+              "developer_Id": "000036",
+              "created_time": 1530784227465,
+              "date_completed": 1530824093831,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b486ad3de4dca1d3f882c35",
+              "module_name": "one time sign in",
+              "module_description": "allow one signin per system",
+              "developer_Id": "000036",
+              "created_time": 1531472595364,
+              "date_completed": 1531481932083,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "_id": "5b4890231a5ea757ba1489ac",
+              "module_name": "EA and QA login",
+              "module_description": "allow ea and qa to login to the desktop app",
+              "developer_Id": "000036",
+              "created_time": 1531482147272,
+              "developer_name": "musa ibrahim",
+              "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data6"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data6": {
+      "title": "Data6",
+      "example": {
+        "_id": "5b2cbe11fa399146a91e619b",
+        "module_name": "fix pm missing on chat",
+        "module_description": "Fix pm not showing on chat",
+        "end_date": 1529708400000,
+        "developer_Id": "000036",
+        "created_time": 1529658897834,
+        "date_completed": 1529667860350,
+        "developer_name": "musa ibrahim",
+        "developer_image": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5b2cbe11fa399146a91e619b",
+          "type": "string"
+        },
+        "module_name": {
+          "description": "",
+          "example": "fix pm missing on chat",
+          "type": "string"
+        },
+        "module_description": {
+          "description": "",
+          "example": "Fix pm not showing on chat",
+          "type": "string"
+        },
+        "end_date": {
+          "description": "",
+          "example": 1529708400000,
+          "type": "integer",
+          "format": "int64"
+        },
+        "developer_Id": {
+          "description": "",
+          "example": "000036",
+          "type": "string"
+        },
+        "created_time": {
+          "description": "",
+          "example": 1529658897834,
+          "type": "integer",
+          "format": "int64"
+        },
+        "date_completed": {
+          "description": "",
+          "example": 1529667860350,
+          "type": "integer",
+          "format": "int64"
+        },
+        "developer_name": {
+          "description": "",
+          "example": "musa ibrahim",
+          "type": "string"
+        },
+        "developer_image": {
+          "description": "",
+          "example": "vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png",
+          "type": "string"
+        }
+      },
+      "required": [
+        "_id",
+        "module_name",
+        "module_description",
+        "developer_Id",
+        "created_time",
+        "developer_name",
+        "developer_image"
+      ]
+    },
+    "LoginResponse": {
+      "title": "LoginResponse",
+      "example": {
+        "status": true,
+        "message": "Login Successful",
+        "type": "5",
+        "user": {
+          "first_name": "Muhammad",
+          "last_name": "Ndako",
+          "Email": "muhammad.ndako@natterbase.com"
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMDAwMDMxIiwiZGV2aWNlX0lkIjoiIiwiaWF0IjoxNTM2NzQ2ODcwLCJleHAiOjE1NjgxOTY0NzB9.WKJQjt4D_LZ_T_yJMzi2SurlyR478aONjBM3eSN1hLE",
+        "userStatus": 2
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Login Successful",
+          "type": "string"
+        },
+        "type": {
+          "description": "",
+          "example": "5",
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "token": {
+          "description": "",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMDAwMDMxIiwiZGV2aWNlX0lkIjoiIiwiaWF0IjoxNTM2NzQ2ODcwLCJleHAiOjE1NjgxOTY0NzB9.WKJQjt4D_LZ_T_yJMzi2SurlyR478aONjBM3eSN1hLE",
+          "type": "string"
+        },
+        "userStatus": {
+          "description": "",
+          "example": 2,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "type",
+        "user",
+        "token",
+        "userStatus"
+      ]
+    },
+    "User": {
+      "title": "User",
+      "example": {
+        "first_name": "Muhammad",
+        "last_name": "Ndako",
+        "Email": "muhammad.ndako@natterbase.com"
+      },
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "description": "",
+          "example": "Muhammad",
+          "type": "string"
+        },
+        "last_name": {
+          "description": "",
+          "example": "Ndako",
+          "type": "string"
+        },
+        "Email": {
+          "description": "",
+          "example": "muhammad.ndako@natterbase.com",
+          "type": "string"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name",
+        "Email"
+      ]
+    },
+    "ConfirmationLinkresponse": {
+      "title": "Confirmation LinkResponse",
+      "example": {
+        "status": true,
+        "message": "Account Confirmed Successfully"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Account Confirmed Successfully",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "GetTeamsByProjectresponse": {
+      "title": "Get Teams By ProjectResponse",
+      "example": {
+        "status": true,
+        "data": [
+          {
+            "_id": "5b1ff170cf03925687e62ded",
+            "first_name": "Muhammad",
+            "last_name": "Ndako",
+            "Email": "muhammad.ndako@natterbase.com",
+            "Id": "000031",
+            "status": 2
+          },
+          {
+            "_id": "5b2a8d52d2f23d10c817898d",
+            "first_name": "Dev Muhd",
+            "last_name": "Ndako",
+            "Email": "mzndako@gmail.com",
+            "Id": "000041",
+            "status": 2
+          },
+          {
+            "_id": "5b680d6a15c80b382a26a3cb",
+            "first_name": "Faith",
+            "last_name": "Dike",
+            "Email": "faith.dike@natterbase.com",
+            "Id": "000074",
+            "status": 2
+          },
+          {
+            "_id": "5b805399498a734c2d63d9a3",
+            "first_name": "Hassan",
+            "last_name": "Oyeyemi",
+            "Email": "oyeyemihassan@gmail.com",
+            "Id": "000088",
+            "status": 2
+          },
+          {
+            "_id": "5b9685ccbb40456c2a8af83d",
+            "first_name": "Awulonu",
+            "last_name": "Obinna",
+            "Email": "awulonuobinna@gmail.com",
+            "Id": "000093",
+            "status": 2
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "example": [
+            {
+              "_id": "5b1ff170cf03925687e62ded",
+              "first_name": "Muhammad",
+              "last_name": "Ndako",
+              "Email": "muhammad.ndako@natterbase.com",
+              "Id": "000031",
+              "status": 2
+            },
+            {
+              "_id": "5b2a8d52d2f23d10c817898d",
+              "first_name": "Dev Muhd",
+              "last_name": "Ndako",
+              "Email": "mzndako@gmail.com",
+              "Id": "000041",
+              "status": 2
+            },
+            {
+              "_id": "5b680d6a15c80b382a26a3cb",
+              "first_name": "Faith",
+              "last_name": "Dike",
+              "Email": "faith.dike@natterbase.com",
+              "Id": "000074",
+              "status": 2
+            },
+            {
+              "_id": "5b805399498a734c2d63d9a3",
+              "first_name": "Hassan",
+              "last_name": "Oyeyemi",
+              "Email": "oyeyemihassan@gmail.com",
+              "Id": "000088",
+              "status": 2
+            },
+            {
+              "_id": "5b9685ccbb40456c2a8af83d",
+              "first_name": "Awulonu",
+              "last_name": "Obinna",
+              "Email": "awulonuobinna@gmail.com",
+              "Id": "000093",
+              "status": 2
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data11"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data11": {
+      "title": "Data11",
+      "example": {
+        "_id": "5b1ff170cf03925687e62ded",
+        "first_name": "Muhammad",
+        "last_name": "Ndako",
+        "Email": "muhammad.ndako@natterbase.com",
+        "Id": "000031",
+        "status": 2
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5b1ff170cf03925687e62ded",
+          "type": "string"
+        },
+        "first_name": {
+          "description": "",
+          "example": "Muhammad",
+          "type": "string"
+        },
+        "last_name": {
+          "description": "",
+          "example": "Ndako",
+          "type": "string"
+        },
+        "Email": {
+          "description": "",
+          "example": "muhammad.ndako@natterbase.com",
+          "type": "string"
+        },
+        "status": {
+          "description": "",
+          "example": 2,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "_id",
+        "first_name",
+        "last_name",
+        "Email",
+        "status"
+      ]
+    },
+    "DeleteAnInviteresponse": {
+      "title": "Delete an InviteResponse",
+      "example": {
+        "status": true,
+        "message": "Invite Deleted Successfully"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Invite Deleted Successfully",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "UpdateClientInforesponse": {
+      "title": "Update Client InfoResponse",
+      "example": {
+        "status": true,
+        "data": null,
+        "message": "Successfully Updated"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "type": "string"
+        },
+        "message": {
+          "description": "",
+          "example": "Successfully Updated",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "data",
+        "message"
+      ]
+    },
+    "GetAllTeamMembersresponse": {
+      "title": "Get All Team MembersResponse",
+      "example": {
+        "status": true,
+        "data": [
+          {
+            "_id": "5b1ff170cf03925687e62ded",
+            "first_name": "Muhammad",
+            "last_name": "Ndako",
+            "Email": "muhammad.ndako@natterbase.com",
+            "Id": "000031",
+            "status": 2
+          },
+          {
+            "_id": "5b2a8d52d2f23d10c817898d",
+            "first_name": "Dev Muhd",
+            "last_name": "Ndako",
+            "Email": "mzndako@gmail.com",
+            "Id": "000041",
+            "status": 2
+          },
+          {
+            "_id": "5b680d6a15c80b382a26a3cb",
+            "first_name": "Faith",
+            "last_name": "Dike",
+            "Email": "faith.dike@natterbase.com",
+            "Id": "000074",
+            "status": 2
+          },
+          {
+            "_id": "5b805399498a734c2d63d9a3",
+            "first_name": "Hassan",
+            "last_name": "Oyeyemi",
+            "Email": "oyeyemihassan@gmail.com",
+            "Id": "000088",
+            "status": 2
+          },
+          {
+            "_id": "5b9685ccbb40456c2a8af83d",
+            "first_name": "Awulonu",
+            "last_name": "Obinna",
+            "Email": "awulonuobinna@gmail.com",
+            "Id": "000093",
+            "status": 2
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "example": [
+            {
+              "_id": "5b1ff170cf03925687e62ded",
+              "first_name": "Muhammad",
+              "last_name": "Ndako",
+              "Email": "muhammad.ndako@natterbase.com",
+              "Id": "000031",
+              "status": 2
+            },
+            {
+              "_id": "5b2a8d52d2f23d10c817898d",
+              "first_name": "Dev Muhd",
+              "last_name": "Ndako",
+              "Email": "mzndako@gmail.com",
+              "Id": "000041",
+              "status": 2
+            },
+            {
+              "_id": "5b680d6a15c80b382a26a3cb",
+              "first_name": "Faith",
+              "last_name": "Dike",
+              "Email": "faith.dike@natterbase.com",
+              "Id": "000074",
+              "status": 2
+            },
+            {
+              "_id": "5b805399498a734c2d63d9a3",
+              "first_name": "Hassan",
+              "last_name": "Oyeyemi",
+              "Email": "oyeyemihassan@gmail.com",
+              "Id": "000088",
+              "status": 2
+            },
+            {
+              "_id": "5b9685ccbb40456c2a8af83d",
+              "first_name": "Awulonu",
+              "last_name": "Obinna",
+              "Email": "awulonuobinna@gmail.com",
+              "Id": "000093",
+              "status": 2
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data11"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "AddCardrequest": {
+      "title": "add cardRequest",
+      "example": {
+        "card": {
+          "no": "121211111111121212",
+          "cvv": "333",
+          "month": "09",
+          "year": "2018"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "card": {
+          "$ref": "#/definitions/Card"
+        }
+      },
+      "required": [
+        "card"
+      ]
+    },
+    "Card": {
+      "title": "Card",
+      "example": {
+        "no": "121211111111121212",
+        "cvv": "333",
+        "month": "09",
+        "year": "2018"
+      },
+      "type": "object",
+      "properties": {
+        "no": {
+          "description": "",
+          "example": "121211111111121212",
+          "type": "string"
+        },
+        "cvv": {
+          "description": "",
+          "example": "333",
+          "type": "string"
+        },
+        "month": {
+          "description": "",
+          "example": "09",
+          "type": "string"
+        },
+        "year": {
+          "description": "",
+          "example": "2018",
+          "type": "string"
+        }
+      },
+      "required": [
+        "no",
+        "cvv",
+        "month",
+        "year"
+      ]
+    },
+    "AddCardresponse": {
+      "title": "add cardResponse",
+      "example": {
+        "status": false,
+        "message": "Invalid card Number!"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Invalid card Number!",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "PasswordResetresponse": {
+      "title": "Password ResetResponse",
+      "example": {
+        "status": true,
+        "message": "Reset Email Sent"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Reset Email Sent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "ResendConfirmationLinkresponse": {
+      "title": "Resend Confirmation LinkResponse",
+      "example": {
+        "status": true,
+        "message": "Confirmation Sent"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Confirmation Sent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "GetProjectOverviewresponse": {
+      "title": "Get Project OverviewResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "$ref": "#/definitions/Data22"
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data22": {
+      "title": "Data22",
+      "example": {
+        "completed": 16,
+        "all_task": 29,
+        "submitted": 5,
+        "done": 16,
+        "in_progress": 2,
+        "last_action": 1537271200351,
+        "progress": 55.172413793103445,
+        "actual_date": null,
+        "urls": [
+          {
+            "_id": "5ba4cf053b2e155b590c5cfb",
+            "token": "$2a$10$wMuGzySEGhzoj1z0OU3Wney6XPwtUWGrparEHJatP3ROFxeQdXLS",
+            "project": "BkWqWZSZm",
+            "Id": "Syg0ZyLGFX",
+            "__v": 0,
+            "permissions": [
+              "Overview"
+            ],
+            "status": 1
+          }
+        ],
+        "host_url": "https://app.zeedas.com"
+      },
+      "type": "object",
+      "properties": {
+        "completed": {
+          "description": "",
+          "example": 16,
+          "type": "integer",
+          "format": "int32"
+        },
+        "all_task": {
+          "description": "",
+          "example": 29,
+          "type": "integer",
+          "format": "int32"
+        },
+        "submitted": {
+          "description": "",
+          "example": 5,
+          "type": "integer",
+          "format": "int32"
+        },
+        "done": {
+          "description": "",
+          "example": 16,
+          "type": "integer",
+          "format": "int32"
+        },
+        "in_progress": {
+          "description": "",
+          "example": 2,
+          "type": "integer",
+          "format": "int32"
+        },
+        "last_action": {
+          "description": "",
+          "example": 1537271200351,
+          "type": "integer",
+          "format": "int64"
+        },
+        "progress": {
+          "description": "",
+          "example": 55.1724137931034,
+          "type": "number",
+          "format": "double"
+        },
+        "actual_date": {
+          "description": "",
+          "type": "string"
+        },
+        "urls": {
+          "description": "",
+          "example": [
+            {
+              "_id": "5ba4cf053b2e155b590c5cfb",
+              "token": "$2a$10$wMuGzySEGhzoj1z0OU3Wney6XPwtUWGrparEHJatP3ROFxeQdXLS",
+              "project": "BkWqWZSZm",
+              "Id": "Syg0ZyLGFX",
+              "__v": 0,
+              "permissions": [
+                "Overview"
+              ],
+              "status": 1
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Url"
+          }
+        },
+        "host_url": {
+          "description": "",
+          "example": "https://app.zeedas.com",
+          "type": "string"
+        }
+      },
+      "required": [
+        "completed",
+        "all_task",
+        "submitted",
+        "done",
+        "in_progress",
+        "last_action",
+        "progress",
+        "actual_date",
+        "urls",
+        "host_url"
+      ]
+    },
+    "Url": {
+      "title": "Url",
+      "example": {
+        "_id": "5ba4cf053b2e155b590c5cfb",
+        "token": "$2a$10$wMuGzySEGhzoj1z0OU3Wney6XPwtUWGrparEHJatP3ROFxeQdXLS",
+        "project": "BkWqWZSZm",
+        "Id": "Syg0ZyLGFX",
+        "__v": 0,
+        "permissions": [
+          "Overview"
+        ],
+        "status": 1
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5ba4cf053b2e155b590c5cfb",
+          "type": "string"
+        },
+        "token": {
+          "description": "",
+          "example": "$2a$10$wMuGzySEGhzoj1z0OU3Wney6XPwtUWGrparEHJatP3ROFxeQdXLS",
+          "type": "string"
+        },
+        "project": {
+          "description": "",
+          "example": "BkWqWZSZm",
+          "type": "string"
+        },
+        "__v": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "permissions": {
+          "description": "",
+          "example": [
+            "Overview"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "description": "",
+          "example": 1,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "_id",
+        "token",
+        "project",
+        "__v",
+        "permissions",
+        "status"
+      ]
+    },
+    "DeleteProjectresponse": {
+      "title": "Delete ProjectResponse",
+      "example": {
+        "status": true,
+        "message": "Successfully Deleted"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Successfully Deleted",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "AcceptOrRejectInviteresponse": {
+      "title": "Accept or Reject InviteResponse",
+      "example": {
+        "status": true,
+        "message": "Accepted Successfully"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Accepted Successfully",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "GetAllPendingInvitesresponse": {
+      "title": "Get All Pending InvitesResponse",
+      "example": {
+        "status": true,
+        "data": [
+          {
+            "_id": "5ba123319606363fda586831",
+            "team_Id": "000028",
+            "invited_user_Id": "000031",
+            "__v": 0,
+            "date": "2018-09-18T16:09:21.814Z",
+            "name": "Muhammad Ndako"
+          },
+          {
+            "_id": "5ba1262aa1dbc145c5c2c4ff",
+            "team_Id": "000028",
+            "invited_user_Id": "000031",
+            "__v": 0,
+            "date": "2018-09-18T16:22:02.598Z",
+            "name": "Muhammad Ndako"
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "example": [
+            {
+              "_id": "5ba123319606363fda586831",
+              "team_Id": "000028",
+              "invited_user_Id": "000031",
+              "__v": 0,
+              "date": "2018-09-18T16:09:21.814Z",
+              "name": "Muhammad Ndako"
+            },
+            {
+              "_id": "5ba1262aa1dbc145c5c2c4ff",
+              "team_Id": "000028",
+              "invited_user_Id": "000031",
+              "__v": 0,
+              "date": "2018-09-18T16:22:02.598Z",
+              "name": "Muhammad Ndako"
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data27"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data27": {
+      "title": "Data27",
+      "example": {
+        "_id": "5ba123319606363fda586831",
+        "team_Id": "000028",
+        "invited_user_Id": "000031",
+        "__v": 0,
+        "date": "2018-09-18T16:09:21.814Z",
+        "name": "Muhammad Ndako"
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5ba123319606363fda586831",
+          "type": "string"
+        },
+        "team_Id": {
+          "description": "",
+          "example": "000028",
+          "type": "string"
+        },
+        "invited_user_Id": {
+          "description": "",
+          "example": "000031",
+          "type": "string"
+        },
+        "__v": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "date": {
+          "description": "",
+          "example": "9/18/2018 4:09:21 PM",
+          "type": "string"
+        },
+        "name": {
+          "description": "",
+          "example": "Muhammad Ndako",
+          "type": "string"
+        }
+      },
+      "required": [
+        "_id",
+        "team_Id",
+        "invited_user_Id",
+        "__v",
+        "date",
+        "name"
+      ]
+    },
+    "GetClientBiodataresponse": {
+      "title": "Get Client BioDataResponse",
+      "example": {
+        "status": true,
+        "data": {
+          "about": "This is about me and you",
+          "website": "www.quicksms1.com",
+          "company_type": "Technology",
+          "company_name": "Quicktel Solution",
+          "industry": "Technology",
+          "year": "2017",
+          "state": "Niger",
+          "country": "Nigeria"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "$ref": "#/definitions/Data29"
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data29": {
+      "title": "Data29",
+      "example": {
+        "about": "This is about me and you",
+        "website": "www.quicksms1.com",
+        "company_type": "Technology",
+        "company_name": "Quicktel Solution",
+        "industry": "Technology",
+        "year": "2017",
+        "state": "Niger",
+        "country": "Nigeria"
+      },
+      "type": "object",
+      "properties": {
+        "about": {
+          "description": "",
+          "example": "This is about me and you",
+          "type": "string"
+        },
+        "website": {
+          "description": "",
+          "example": "www.quicksms1.com",
+          "type": "string"
+        },
+        "company_type": {
+          "description": "",
+          "example": "Technology",
+          "type": "string"
+        },
+        "company_name": {
+          "description": "",
+          "example": "Quicktel Solution",
+          "type": "string"
+        },
+        "industry": {
+          "description": "",
+          "example": "Technology",
+          "type": "string"
+        },
+        "year": {
+          "description": "",
+          "example": "2017",
+          "type": "string"
+        },
+        "state": {
+          "description": "",
+          "example": "Niger",
+          "type": "string"
+        },
+        "country": {
+          "description": "",
+          "example": "Nigeria",
+          "type": "string"
+        }
+      },
+      "required": [
+        "about",
+        "website",
+        "company_type",
+        "company_name",
+        "industry",
+        "year",
+        "state",
+        "country"
+      ]
+    },
+    "GetProjectresponse": {
+      "title": "Get ProjectResponse",
+      "example": {
+        "status": true,
+        "data": [
+          {
+            "_id": "5b2781881085621255503075",
+            "project_name": "Zeedas Backend",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1529315720869",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 2
+          },
+          {
+            "_id": "5b2781b11085621255503076",
+            "project_name": "Zeedas FrontEnd",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1529315761799",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 2
+          },
+          {
+            "_id": "5b2a88ecbe859b06e7bad1e0",
+            "project_name": "Cashless (leadspace)",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1529514220466",
+            "team": [
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5b2b8c1ff21bf311a76e620c",
+            "project_name": "Zeedas Desktop",
+            "project_description": "",
+            "platform_name": "other",
+            "created_time": "1529580575501",
+            "team": [
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 2
+          },
+          {
+            "_id": "5b43312950713d50d5ed36fc",
+            "project_name": "Zeedas Hire",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1531130153864",
+            "team": [
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5b477d483f428975768e36d3",
+            "project_name": "Passion Incubation",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1531411784817",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 0
+          },
+          {
+            "_id": "5b68563415c80b382a26a3d3",
+            "project_name": "SaveAll",
+            "project_description": "",
+            "platform_name": "other",
+            "created_time": "1533564468770",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5b68657115c80b382a26a3e2",
+            "project_name": "FundAll",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1533568369344",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5b76b8d225de3d4b0ac775df",
+            "project_name": "FundAll iOS",
+            "project_description": "",
+            "platform_name": "mobile",
+            "created_time": "1534507218633",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5b83c812498a734c2d63da06",
+            "project_name": "VisionScape",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1535363090600",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5b968ab3bb40456c2a8af865",
+            "project_name": "TBCA Frontend",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1536592563258",
+            "team": [
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/1536591790829-000093-100x100.jpg"
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              },
+              {
+                "image": ""
+              }
+            ],
+            "pm_count": 1
+          },
+          {
+            "_id": "5ba3bce305a9082ff4e71b97",
+            "project_name": "daranig",
+            "project_description": "",
+            "platform_name": "web",
+            "created_time": "1537457379614",
+            "team": [
+              {
+                "image": ""
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+              },
+              {
+                "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+              }
+            ],
+            "pm_count": 0
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "example": [
+            {
+              "_id": "5b2781881085621255503075",
+              "project_name": "Zeedas Backend",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1529315720869",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 2
+            },
+            {
+              "_id": "5b2781b11085621255503076",
+              "project_name": "Zeedas FrontEnd",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1529315761799",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 2
+            },
+            {
+              "_id": "5b2a88ecbe859b06e7bad1e0",
+              "project_name": "Cashless (leadspace)",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1529514220466",
+              "team": [
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5b2b8c1ff21bf311a76e620c",
+              "project_name": "Zeedas Desktop",
+              "project_description": "",
+              "platform_name": "other",
+              "created_time": "1529580575501",
+              "team": [
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 2
+            },
+            {
+              "_id": "5b43312950713d50d5ed36fc",
+              "project_name": "Zeedas Hire",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1531130153864",
+              "team": [
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5b477d483f428975768e36d3",
+              "project_name": "Passion Incubation",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1531411784817",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 0
+            },
+            {
+              "_id": "5b68563415c80b382a26a3d3",
+              "project_name": "SaveAll",
+              "project_description": "",
+              "platform_name": "other",
+              "created_time": "1533564468770",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5b68657115c80b382a26a3e2",
+              "project_name": "FundAll",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1533568369344",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5b76b8d225de3d4b0ac775df",
+              "project_name": "FundAll iOS",
+              "project_description": "",
+              "platform_name": "mobile",
+              "created_time": "1534507218633",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5b83c812498a734c2d63da06",
+              "project_name": "VisionScape",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1535363090600",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5b968ab3bb40456c2a8af865",
+              "project_name": "TBCA Frontend",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1536592563258",
+              "team": [
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/1536591790829-000093-100x100.jpg"
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                },
+                {
+                  "image": ""
+                }
+              ],
+              "pm_count": 1
+            },
+            {
+              "_id": "5ba3bce305a9082ff4e71b97",
+              "project_name": "daranig",
+              "project_description": "",
+              "platform_name": "web",
+              "created_time": "1537457379614",
+              "team": [
+                {
+                  "image": ""
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/passport21530657639045-100x100.jpg"
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+                },
+                {
+                  "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+                }
+              ],
+              "pm_count": 0
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data33"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data33": {
+      "title": "Data33",
+      "example": {
+        "_id": "5b2781881085621255503075",
+        "project_name": "Zeedas Backend",
+        "project_description": "",
+        "platform_name": "web",
+        "created_time": "1529315720869",
+        "team": [
+          {
+            "image": ""
+          },
+          {
+            "image": ""
+          },
+          {
+            "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+          },
+          {
+            "image": ""
+          },
+          {
+            "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+          },
+          {
+            "image": ""
+          },
+          {
+            "image": ""
+          },
+          {
+            "image": ""
+          }
+        ],
+        "pm_count": 2
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5b2781881085621255503075",
+          "type": "string"
+        },
+        "project_name": {
+          "description": "",
+          "example": "Zeedas Backend",
+          "type": "string"
+        },
+        "project_description": {
+          "description": "",
+          "type": "string"
+        },
+        "platform_name": {
+          "description": "",
+          "example": "web",
+          "type": "string"
+        },
+        "created_time": {
+          "description": "",
+          "example": "1529315720869",
+          "type": "string"
+        },
+        "team": {
+          "description": "",
+          "example": [
+            {
+              "image": ""
+            },
+            {
+              "image": ""
+            },
+            {
+              "image": "https://api.natterbase.com/static/img/thumbnails/Artical-wallpaper-111252221530521335392-100x100.jpg"
+            },
+            {
+              "image": ""
+            },
+            {
+              "image": "https://api.natterbase.com/static/img/thumbnails/vlcsnap-2015-07-04-12h43m50s171530521280390-100x100.png"
+            },
+            {
+              "image": ""
+            },
+            {
+              "image": ""
+            },
+            {
+              "image": ""
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        },
+        "pm_count": {
+          "description": "",
+          "example": 2,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "_id",
+        "project_name",
+        "project_description",
+        "platform_name",
+        "created_time",
+        "team",
+        "pm_count"
+      ]
+    },
+    "Team": {
+      "title": "Team",
+      "example": {
+        "image": ""
+      },
+      "type": "object",
+      "properties": {
+        "image": {
+          "description": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "image"
+      ]
+    },
+    "DeleteCardresponse": {
+      "title": "Delete cardResponse",
+      "example": {
+        "status": false,
+        "message": "Card not failed"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Card not failed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "AddCardresponse36": {
+      "title": "Add cardResponse36",
+      "example": {
+        "status": true,
+        "data": []
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "HireDeveloperresponse": {
+      "title": "Hire DeveloperResponse",
+      "example": {
+        "status": true,
+        "message": "Invite sent to the developer"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "message": {
+          "description": "",
+          "example": "Invite sent to the developer",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "RetrieveModuleDetailsresponse": {
+      "title": "Retrieve Module DetailsResponse",
+      "example": {
+        "status": true,
+        "data": {
+          "_id": "5b2cbe11fa399146a91e619b",
+          "module_name": "fix pm missing on chat",
+          "module_description": "Fix pm not showing on chat",
+          "category": "all",
+          "end_date": 1529708400000,
+          "dev_time": 3,
+          "developer_Id": "musa ibrahim",
+          "project_Id": "SyvmnWF-m",
+          "updated_time": 1529658898716,
+          "created_time": 1529658897834,
+          "Id": "Sk9fR49W7",
+          "__v": 0,
+          "rejected_reason": "",
+          "start_time": 1529663258785,
+          "date_completed": 1529667860350,
+          "link": "",
+          "cast": [],
+          "acted_on": 0,
+          "mail_sent_dev_id": "",
+          "dev_can_start": true,
+          "sprint": 1,
+          "location": [],
+          "created_by_dev": "",
+          "attention": false,
+          "status": 3,
+          "rejected": 0,
+          "extended_time": 0,
+          "actual_time": 7922.513553801713,
+          "access_files": [],
+          "files": [],
+          "dependency": [],
+          "issues": [],
+          "test": [],
+          "method": [],
+          "recent_files": [
+            {
+              "time": "1529664987972",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Auth.js",
+              "_id": "5b2cd5dbc91cb477300fbe41"
+            },
+            {
+              "time": "1529678306550",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\core\\ang.js",
+              "_id": "5b2cd604c91cb477300fbe44"
+            },
+            {
+              "time": "1529667670517",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\templates\\chat.html",
+              "_id": "5b2cd87dc91cb477300fbe48"
+            },
+            {
+              "time": "1529665868333",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\app.html",
+              "_id": "5b2cd94cc91cb477300fbe4e"
+            },
+            {
+              "time": "1529688763335",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Project.js",
+              "_id": "5b2ce49ac91cb477300fbe77"
+            },
+            {
+              "time": "1529688892695",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\services\\filesystem.js",
+              "_id": "5b2d05db13a3441d0fc15d58"
+            },
+            {
+              "time": "1529678076857",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\css\\bootstrap\\less\\utilities.less",
+              "_id": "5b2d08fc13a3441d0fc15d5d"
+            },
+            {
+              "time": "1529678103521",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\alert-circled.png",
+              "_id": "5b2d091713a3441d0fc15d5e"
+            },
+            {
+              "time": "1529678103641",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\android-mixer.png",
+              "_id": "5b2d091713a3441d0fc15d5f"
+            },
+            {
+              "time": "1529689042848",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\ecosystem.config.js",
+              "_id": "5b2d0edcff5f9941235d30c7"
+            }
+          ],
+          "on_ea": false,
+          "ea": false,
+          "on_qa": false,
+          "qa": false
+        }
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "data": {
+          "$ref": "#/definitions/Data39"
+        }
+      },
+      "required": [
+        "status",
+        "data"
+      ]
+    },
+    "Data39": {
+      "title": "Data39",
+      "example": {
+        "_id": "5b2cbe11fa399146a91e619b",
+        "module_name": "fix pm missing on chat",
+        "module_description": "Fix pm not showing on chat",
+        "category": "all",
+        "end_date": 1529708400000,
+        "dev_time": 3,
+        "developer_Id": "musa ibrahim",
+        "project_Id": "SyvmnWF-m",
+        "updated_time": 1529658898716,
+        "created_time": 1529658897834,
+        "Id": "Sk9fR49W7",
+        "__v": 0,
+        "rejected_reason": "",
+        "start_time": 1529663258785,
+        "date_completed": 1529667860350,
+        "link": "",
+        "cast": [],
+        "acted_on": 0,
+        "mail_sent_dev_id": "",
+        "dev_can_start": true,
+        "sprint": 1,
+        "location": [],
+        "created_by_dev": "",
+        "attention": false,
+        "status": 3,
+        "rejected": 0,
+        "extended_time": 0,
+        "actual_time": 7922.513553801713,
+        "access_files": [],
+        "files": [],
+        "dependency": [],
+        "issues": [],
+        "test": [],
+        "method": [],
+        "recent_files": [
+          {
+            "time": "1529664987972",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Auth.js",
+            "_id": "5b2cd5dbc91cb477300fbe41"
+          },
+          {
+            "time": "1529678306550",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\core\\ang.js",
+            "_id": "5b2cd604c91cb477300fbe44"
+          },
+          {
+            "time": "1529667670517",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\templates\\chat.html",
+            "_id": "5b2cd87dc91cb477300fbe48"
+          },
+          {
+            "time": "1529665868333",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\app.html",
+            "_id": "5b2cd94cc91cb477300fbe4e"
+          },
+          {
+            "time": "1529688763335",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Project.js",
+            "_id": "5b2ce49ac91cb477300fbe77"
+          },
+          {
+            "time": "1529688892695",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\services\\filesystem.js",
+            "_id": "5b2d05db13a3441d0fc15d58"
+          },
+          {
+            "time": "1529678076857",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\css\\bootstrap\\less\\utilities.less",
+            "_id": "5b2d08fc13a3441d0fc15d5d"
+          },
+          {
+            "time": "1529678103521",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\alert-circled.png",
+            "_id": "5b2d091713a3441d0fc15d5e"
+          },
+          {
+            "time": "1529678103641",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\android-mixer.png",
+            "_id": "5b2d091713a3441d0fc15d5f"
+          },
+          {
+            "time": "1529689042848",
+            "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\ecosystem.config.js",
+            "_id": "5b2d0edcff5f9941235d30c7"
+          }
+        ],
+        "on_ea": false,
+        "ea": false,
+        "on_qa": false,
+        "qa": false
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5b2cbe11fa399146a91e619b",
+          "type": "string"
+        },
+        "module_name": {
+          "description": "",
+          "example": "fix pm missing on chat",
+          "type": "string"
+        },
+        "module_description": {
+          "description": "",
+          "example": "Fix pm not showing on chat",
+          "type": "string"
+        },
+        "category": {
+          "description": "",
+          "example": "all",
+          "type": "string"
+        },
+        "end_date": {
+          "description": "",
+          "example": 1529708400000,
+          "type": "integer",
+          "format": "int64"
+        },
+        "dev_time": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "developer_Id": {
+          "description": "",
+          "example": "musa ibrahim",
+          "type": "string"
+        },
+        "project_Id": {
+          "description": "",
+          "example": "SyvmnWF-m",
+          "type": "string"
+        },
+        "updated_time": {
+          "description": "",
+          "example": 1529658898716,
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_time": {
+          "description": "",
+          "example": 1529658897834,
+          "type": "integer",
+          "format": "int64"
+        },
+        "__v": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejected_reason": {
+          "description": "",
+          "type": "string"
+        },
+        "start_time": {
+          "description": "",
+          "example": 1529663258785,
+          "type": "integer",
+          "format": "int64"
+        },
+        "date_completed": {
+          "description": "",
+          "example": 1529667860350,
+          "type": "integer",
+          "format": "int64"
+        },
+        "link": {
+          "description": "",
+          "type": "string"
+        },
+        "cast": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acted_on": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "mail_sent_dev_id": {
+          "description": "",
+          "type": "string"
+        },
+        "dev_can_start": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "sprint": {
+          "description": "",
+          "example": 1,
+          "type": "integer",
+          "format": "int32"
+        },
+        "location": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created_by_dev": {
+          "description": "",
+          "type": "string"
+        },
+        "attention": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        },
+        "status": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "rejected": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "extended_time": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        },
+        "actual_time": {
+          "description": "",
+          "example": 7922.51355380171,
+          "type": "number",
+          "format": "double"
+        },
+        "access_files": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "files": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dependency": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "issues": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "test": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "method": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recent_files": {
+          "description": "",
+          "example": [
+            {
+              "time": "1529664987972",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Auth.js",
+              "_id": "5b2cd5dbc91cb477300fbe41"
+            },
+            {
+              "time": "1529678306550",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\core\\ang.js",
+              "_id": "5b2cd604c91cb477300fbe44"
+            },
+            {
+              "time": "1529667670517",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\templates\\chat.html",
+              "_id": "5b2cd87dc91cb477300fbe48"
+            },
+            {
+              "time": "1529665868333",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\app.html",
+              "_id": "5b2cd94cc91cb477300fbe4e"
+            },
+            {
+              "time": "1529688763335",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Project.js",
+              "_id": "5b2ce49ac91cb477300fbe77"
+            },
+            {
+              "time": "1529688892695",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\services\\filesystem.js",
+              "_id": "5b2d05db13a3441d0fc15d58"
+            },
+            {
+              "time": "1529678076857",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\css\\bootstrap\\less\\utilities.less",
+              "_id": "5b2d08fc13a3441d0fc15d5d"
+            },
+            {
+              "time": "1529678103521",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\alert-circled.png",
+              "_id": "5b2d091713a3441d0fc15d5e"
+            },
+            {
+              "time": "1529678103641",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\src\\assets\\libs\\Ionicons\\png\\512\\android-mixer.png",
+              "_id": "5b2d091713a3441d0fc15d5f"
+            },
+            {
+              "time": "1529689042848",
+              "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\Boiler\\H1HnY4txm\\ecosystem.config.js",
+              "_id": "5b2d0edcff5f9941235d30c7"
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecentFile"
+          }
+        },
+        "on_ea": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        },
+        "ea": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        },
+        "on_qa": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        },
+        "qa": {
+          "description": "",
+          "example": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "_id",
+        "module_name",
+        "module_description",
+        "category",
+        "end_date",
+        "dev_time",
+        "developer_Id",
+        "project_Id",
+        "updated_time",
+        "created_time",
+        "__v",
+        "rejected_reason",
+        "start_time",
+        "date_completed",
+        "link",
+        "cast",
+        "acted_on",
+        "mail_sent_dev_id",
+        "dev_can_start",
+        "sprint",
+        "location",
+        "created_by_dev",
+        "attention",
+        "status",
+        "rejected",
+        "extended_time",
+        "actual_time",
+        "access_files",
+        "files",
+        "dependency",
+        "issues",
+        "test",
+        "method",
+        "recent_files",
+        "on_ea",
+        "ea",
+        "on_qa",
+        "qa"
+      ]
+    },
+    "RecentFile": {
+      "title": "RecentFile",
+      "example": {
+        "time": "1529664987972",
+        "path": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Auth.js",
+        "_id": "5b2cd5dbc91cb477300fbe41"
+      },
+      "type": "object",
+      "properties": {
+        "time": {
+          "description": "",
+          "example": "1529664987972",
+          "type": "string"
+        },
+        "path": {
+          "description": "",
+          "example": "C:\\Users\\Zainab_Darangi\\AppData\\Local\\Programs\\Zeedas\\\\app\\js\\controllers\\Auth.js",
+          "type": "string"
+        },
+        "_id": {
+          "description": "",
+          "example": "5b2cd5dbc91cb477300fbe41",
+          "type": "string"
+        }
+      },
+      "required": [
+        "time",
+        "path",
+        "_id"
+      ]
+    },
+    "GetProjectTimelineresponse": {
+      "title": "Get Project TimelineResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "timeline": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GeneratedObject"
+          }
+        },
+        "timelog": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sprints": {
+          "description": "",
+          "example": [
+            "2018-09-24T23:00:00Z",
+            "2018-07-19T23:00:00Z"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual_delivery_date": {
+          "description": "",
+          "example": "6/26/2018 11:00:00 PM",
+          "type": "string"
+        },
+        "deadlinesMissed": {
+          "description": "",
+          "example": 0,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "status",
+        "timeline",
+        "timelog",
+        "sprints",
+        "actual_delivery_date",
+        "deadlinesMissed"
+      ]
+    },
+    "GeneratedObject": {
+      "title": "generatedObject",
+      "type": "object",
+      "properties": {
+        "date": {
+          "description": "",
+          "example": "Wed Jun 27 2018",
+          "type": "string"
+        },
+        "modules": {
+          "$ref": "#/definitions/Modules"
+        }
+      },
+      "required": [
+        "date",
+        "modules"
+      ]
+    },
+    "Modules": {
+      "title": "Modules",
+      "example": {
+        "HkFmW1-zQ": {
+          "_id": "5b336120c5cdb3795714b605",
+          "category": "all",
+          "dev_time": 3,
+          "module_name": "Queue merging request",
+          "developer_Id": "000035",
+          "created_time": 1530093856916,
+          "Id": "HkFmW1-zQ",
+          "start_time": 1530097639864,
+          "date_completed": 1530114652132,
+          "status": 3,
+          "actual_time": 6775.6016118202142,
+          "dependency": [],
+          "skills": [],
+          "time": 3,
+          "developerId": "000035",
+          "developer": "Onoja Ahman",
+          "hours": 3,
+          "time_spent": 2,
+          "completed": true,
+          "last_day": true
+        }
+      },
+      "type": "object",
+      "properties": {
+        "HkFmW1-zQ": {
+          "$ref": "#/definitions/HkFmW1ZQ"
+        }
+      },
+      "required": [
+        "HkFmW1-zQ"
+      ]
+    },
+    "HkFmW1ZQ": {
+      "title": "HkFmW1ZQ",
+      "example": {
+        "_id": "5b336120c5cdb3795714b605",
+        "category": "all",
+        "dev_time": 3,
+        "module_name": "Queue merging request",
+        "developer_Id": "000035",
+        "created_time": 1530093856916,
+        "Id": "HkFmW1-zQ",
+        "start_time": 1530097639864,
+        "date_completed": 1530114652132,
+        "status": 3,
+        "actual_time": 6775.6016118202142,
+        "dependency": [],
+        "skills": [],
+        "time": 3,
+        "developerId": "000035",
+        "developer": "Onoja Ahman",
+        "hours": 3,
+        "time_spent": 2,
+        "completed": true,
+        "last_day": true
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5b336120c5cdb3795714b605",
+          "type": "string"
+        },
+        "category": {
+          "description": "",
+          "example": "all",
+          "type": "string"
+        },
+        "dev_time": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "module_name": {
+          "description": "",
+          "example": "Queue merging request",
+          "type": "string"
+        },
+        "developer_Id": {
+          "description": "",
+          "example": "000035",
+          "type": "string"
+        },
+        "created_time": {
+          "description": "",
+          "example": 1530093856916,
+          "type": "integer",
+          "format": "int64"
+        },
+        "start_time": {
+          "description": "",
+          "example": 1530097639864,
+          "type": "integer",
+          "format": "int64"
+        },
+        "date_completed": {
+          "description": "",
+          "example": 1530114652132,
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "actual_time": {
+          "description": "",
+          "example": 6775.60161182021,
+          "type": "number",
+          "format": "double"
+        },
+        "dependency": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skills": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "time": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "developer": {
+          "description": "",
+          "example": "Onoja Ahman",
+          "type": "string"
+        },
+        "hours": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "time_spent": {
+          "description": "",
+          "example": 2,
+          "type": "integer",
+          "format": "int32"
+        },
+        "completed": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "last_day": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "_id",
+        "category",
+        "dev_time",
+        "module_name",
+        "developer_Id",
+        "created_time",
+        "start_time",
+        "date_completed",
+        "status",
+        "actual_time",
+        "dependency",
+        "skills",
+        "time",
+        "developer",
+        "hours",
+        "time_spent",
+        "completed",
+        "last_day"
+      ]
+    },
+    "GeneratedObject47": {
+      "title": "generatedObject47",
+      "type": "object",
+      "properties": {
+        "date": {
+          "description": "",
+          "example": "Thu Jul 19 2018",
+          "type": "string"
+        },
+        "modules": {
+          "$ref": "#/definitions/Modules48"
+        }
+      },
+      "required": [
+        "date",
+        "modules"
+      ]
+    },
+    "Modules48": {
+      "title": "Modules48",
+      "example": {
+        "r1XBUvjXX": {
+          "_id": "5b4de63b462c4f15cbe8ebdd",
+          "category": "all",
+          "dev_time": 3,
+          "module_name": "ZH: Login and Sign up endpoint",
+          "developer_Id": "000035",
+          "created_time": 1531831867055,
+          "Id": "r1XBUvjXX",
+          "start_time": 1531833233965,
+          "date_completed": 1531990535698,
+          "status": 3,
+          "actual_time": 4287.1405159999995,
+          "dependency": [],
+          "skills": [],
+          "time": 3,
+          "developerId": "000035",
+          "developer": "Onoja Ahman",
+          "hours": 3,
+          "time_spent": 1,
+          "completed": true,
+          "last_day": true
+        }
+      },
+      "type": "object",
+      "properties": {
+        "r1XBUvjXX": {
+          "$ref": "#/definitions/R1XBUvjXX"
+        }
+      },
+      "required": [
+        "r1XBUvjXX"
+      ]
+    },
+    "R1XBUvjXX": {
+      "title": "R1XBUvjXX",
+      "example": {
+        "_id": "5b4de63b462c4f15cbe8ebdd",
+        "category": "all",
+        "dev_time": 3,
+        "module_name": "ZH: Login and Sign up endpoint",
+        "developer_Id": "000035",
+        "created_time": 1531831867055,
+        "Id": "r1XBUvjXX",
+        "start_time": 1531833233965,
+        "date_completed": 1531990535698,
+        "status": 3,
+        "actual_time": 4287.1405159999995,
+        "dependency": [],
+        "skills": [],
+        "time": 3,
+        "developerId": "000035",
+        "developer": "Onoja Ahman",
+        "hours": 3,
+        "time_spent": 1,
+        "completed": true,
+        "last_day": true
+      },
+      "type": "object",
+      "properties": {
+        "_id": {
+          "description": "",
+          "example": "5b4de63b462c4f15cbe8ebdd",
+          "type": "string"
+        },
+        "category": {
+          "description": "",
+          "example": "all",
+          "type": "string"
+        },
+        "dev_time": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "module_name": {
+          "description": "",
+          "example": "ZH: Login and Sign up endpoint",
+          "type": "string"
+        },
+        "developer_Id": {
+          "description": "",
+          "example": "000035",
+          "type": "string"
+        },
+        "created_time": {
+          "description": "",
+          "example": 1531831867055,
+          "type": "integer",
+          "format": "int64"
+        },
+        "start_time": {
+          "description": "",
+          "example": 1531833233965,
+          "type": "integer",
+          "format": "int64"
+        },
+        "date_completed": {
+          "description": "",
+          "example": 1531990535698,
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "actual_time": {
+          "description": "",
+          "example": 4287.140516,
+          "type": "number",
+          "format": "double"
+        },
+        "dependency": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skills": {
+          "description": "",
+          "example": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "time": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "developer": {
+          "description": "",
+          "example": "Onoja Ahman",
+          "type": "string"
+        },
+        "hours": {
+          "description": "",
+          "example": 3,
+          "type": "integer",
+          "format": "int32"
+        },
+        "time_spent": {
+          "description": "",
+          "example": 1,
+          "type": "integer",
+          "format": "int32"
+        },
+        "completed": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        },
+        "last_day": {
+          "description": "",
+          "example": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "_id",
+        "category",
+        "dev_time",
+        "module_name",
+        "developer_Id",
+        "created_time",
+        "start_time",
+        "date_completed",
+        "status",
+        "actual_time",
+        "dependency",
+        "skills",
+        "time",
+        "developer",
+        "hours",
+        "time_spent",
+        "completed",
+        "last_day"
+      ]
+    }
+  }
+}

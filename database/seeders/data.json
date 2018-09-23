@@ -1,0 +1,32 @@
+{
+    "skills": {
+        "_model": "Skills",
+        "vue": {
+            "name": "VueJs"
+        },
+        "python": {
+            "name": "Python"
+        },
+        "javascript": {
+            "name": "Javascript"
+        },
+        "node": {
+            "name": "NodeJs"
+        },
+        "java": {
+            "name": "Java"
+        },
+        "angular": {
+            "name": "AngularJs"
+        },
+        "photoshop": {
+            "name": "Photoshop"
+        },
+        "ios": {
+            "name": "IOS"
+        },
+        "django": {
+            "name": "Django"
+        }
+    }
+}
