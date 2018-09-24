@@ -26,4 +26,4 @@ var bashSchema = new Schema({
 
 
 
-module.exports = mongoose.model('userDB', bashSchema);
+module.exports = mongoose.model('user', bashSchema);

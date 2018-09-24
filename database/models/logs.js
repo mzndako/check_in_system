@@ -2,13 +2,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var merchant_schema = new Schema({
-    user_Id: string,
-    email: { type: String, required: true, unique: true }, // Make email unique and required
-    secret_key: String,
-    public_key: String,
+var logs_schema = new Schema({
+    email: { type: String, required: true }, // required
+    location_Id: String,
+    address: String,
+    points: Number,
+    date: {type: Date, default: Date.now}
 });
 
 
 
-module.exports = mongoose.model('merchant', merchant_schema);
+module.exports = mongoose.model('logs', logs_schema);

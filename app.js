@@ -28,18 +28,17 @@ app.use('/api-docs', swagger_ui.serve, swagger_ui.setup(swagger_doc));
 app.use('/api/v1/' , require('./routes/index'));
 
 // Establish the database connection
-mongoose.connect(config_db.database, function(err) {
+mongoose.connect(config_db.database,{ useNewUrlParser: true }, function(err) {
     if (err) {
-        console.log('database connection error', err);
+        // console.log('database connection error', err);
     } else {
-        console.log('database connection successful');
+        // console.log('Database Connection Successful');
     }
 });
 
 // Setup Admin default username and password if not already set
-admin_db.findOne({admin: config.default_admin_username.toLowerCase()}, (err, admin)=>{
+admin_db.findOne({username: config.default_admin_username.toLowerCase()}, (err, admin)=>{
     // If admin not found, create it
-    console.log(err);
     if(!admin){
         admin_db.create({
             username: config.default_admin_username.toLowerCase(),
@@ -49,6 +48,7 @@ admin_db.findOne({admin: config.default_admin_username.toLowerCase()}, (err, adm
     }
 });
 
-console.log("listening");
-server.listen(config.port);;
-console.log("eeee")
+// console.log("listening on PORT "+ config.port);
+server.listen(config.port);
+
+module.exports = app;

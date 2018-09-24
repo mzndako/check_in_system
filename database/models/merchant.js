@@ -8,6 +8,7 @@ var merchant_schema = new Schema({
     email: { type: String, required: true, unique: true }, // Make email unique and required
     secret_key: String,
     public_key: String,
+    account_balance: Number
 });
 
 
