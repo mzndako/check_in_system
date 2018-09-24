@@ -29,11 +29,7 @@ app.use('/api/v1/' , require('./routes/index'));
 
 // Establish the database connection
 mongoose.connect(config_db.database,{ useNewUrlParser: true }, function(err) {
-    if (err) {
-        // console.log('database connection error', err);
-    } else {
-        // console.log('Database Connection Successful');
-    }
+    if (err) throw err;
 });
 
 // Setup Admin default username and password if not already set
@@ -44,11 +40,10 @@ admin_db.findOne({username: config.default_admin_username.toLowerCase()}, (err, 
             username: config.default_admin_username.toLowerCase(),
             password: auth_function.encrypt_password(config.default_admin_password),
             email: config.default_admin_email
-        }, (err, success)=> {console.log(err);});
+        }, (err, success)=> {});
     }
 });
 
-// console.log("listening on PORT "+ config.port);
 server.listen(config.port);
 
 module.exports = app;
