@@ -126,7 +126,7 @@ module.exports = {
             public_key: public_key,
         }, (err, update) => {
             // Return the token for the check in location
-            res.send({status: true, message: "Merchant successfully created"});
+            res.send({status: true, message: "Merchant successfully created", data: {secret_key, public_key}});
         });
 
     },
@@ -165,18 +165,18 @@ module.exports = {
 
         // Most provide at least a first name or last name
         if(!first_name && !last_name){
-            return res.status(400).send({status: false, message: "First Name and Last Name can not both be empty"});
+            return res.status(403).send({status: false, message: "First Name and Last Name can not both be empty"});
         }
 
         // Make sure card number and/or pin is not empty.
         // The PIN can be change later by the user
         if(!card_number || !pin){
-            return res.status(400).send({status: false, message: "First Name and Last Name can not both be empty"});
+            return res.status(403).send({status: false, message: "Please provide user card number and pin"});
         }
 
         // Make sure valid email is submitted
         if(!email){
-            return res.status(400).send({status: false, message: "Email address can not be empty"});
+            return res.status(403).send({status: false, message: "Email address can not be empty"});
         }
 
         email = email.toLowerCase(); // Convert to lowercase for future ease of search

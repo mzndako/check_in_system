@@ -68,7 +68,7 @@
         "description": "Create a location where users can check in",
         "summary": "Get All Check In Locations",
         "tags": [
-          "Location"
+          "Admin"
         ],
         "operationId": "AdminCheckInLocationGet",
         "produces": [
@@ -112,7 +112,7 @@
         "description": "Create a location where users can check in",
         "summary": "Create Check in Location",
         "tags": [
-          "Location"
+          "Admin"
         ],
         "operationId": "AdminCheckInLocationPost",
         "produces": [
@@ -182,7 +182,7 @@
         "description": "Delete a check in location",
         "summary": "Delete A Check In Location",
         "tags": [
-          "Location"
+          "Admin"
         ],
         "operationId": "AdminCheckInLocationByLocationIdDelete",
         "produces": [
@@ -225,7 +225,7 @@
         "description": "Delete a check in location",
         "summary": "Delete A Merchant",
         "tags": [
-          "Merchant"
+          "Admin"
         ],
         "operationId": "AdminMerchantByMerchantIdDelete",
         "produces": [
@@ -321,7 +321,7 @@
         "description": "Retreive all merchants",
         "summary": "Get All Merchants",
         "tags": [
-          "Merchant"
+          "Admin"
         ],
         "operationId": "AdminMerchantGet",
         "produces": [
@@ -365,7 +365,7 @@
         "description": "Create merchant",
         "summary": "Create A Merchant",
         "tags": [
-          "Merchant"
+          "Admin"
         ],
         "operationId": "AdminMerchantPost",
         "produces": [
@@ -531,7 +531,7 @@
         "description": "Delete a user",
         "summary": "Delete A User",
         "tags": [
-          "User"
+          "Admin"
         ],
         "operationId": "AdminUserByUserIdDelete",
         "produces": [
@@ -589,7 +589,25 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -671,7 +689,7 @@
         "description": "Retreive all users",
         "summary": "Get All Users",
         "tags": [
-          "User"
+          "Admin"
         ],
         "operationId": "AdminUserGet",
         "produces": [
@@ -748,7 +766,7 @@
         "description": "Create a user",
         "summary": "Create A User",
         "tags": [
-          "User"
+          "Admin"
         ],
         "operationId": "AdminUserPost",
         "produces": [

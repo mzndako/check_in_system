@@ -18,7 +18,7 @@ module.exports = {
         check_in_location_db.findOne({authorization_token: check_in_token}, (err, location)=>{
             // Check to confirm if it is a valid check in location
             if(!location){
-                return res.status(401).send({status: false, message: "Invalid Location token"});
+                return res.status(401).send({status: false, message: "Invalid Check In Location Token"});
             }
 
             account_db.findOne({card_number: card_number}, (err, account)=>{
@@ -27,7 +27,7 @@ module.exports = {
                 }
                 auth_function.verify_password(pin, account.pin, (status)=>{
                     if(!status){
-                        return res.status(403).send({status: false, message: "Incorrect Pin"});
+                        return res.status(401).send({status: false, message: "Incorrect PIN"});
                     }
 
                     // Find the user
