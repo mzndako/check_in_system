@@ -5,7 +5,7 @@
     "title": "Check In",
     "description": "User check in reward system"
   },
-  "host": "localhost:3000",
+  "host": "178.128.34.164:9000",
   "basePath": "/api/v1",
   "schemes": [
     "http"

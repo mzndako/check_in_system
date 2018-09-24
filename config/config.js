@@ -1,6 +1,6 @@
 module.exports = {
     // Setup port
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 9000,
 
     // Setup the secret keys for jwt
     jwt_secret_key_admin: process.env.SECRET_KEY_ADMIN || "kdsj4e323iko45589oijfdsnkljmld",
